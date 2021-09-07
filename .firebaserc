@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fir-demo-ffa2a": {
+      "hosting": {
+        "oshop": [
+          "fir-demo-ffa2a"
+        ]
+      }
+    }
+  }
+}
