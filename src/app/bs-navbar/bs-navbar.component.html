@@ -12,10 +12,12 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLink="/shopping-cart">Shoping Cart</a>
         </li>
-        <li *ngIf="!user" class="nav-item">
-          <a class="nav-link" routerLink="/login">Login</a>
-        </li>
-        <li *ngIf="user" class="nav-item dropdown">
+        <ng-template #anonymusUser>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+        </ng-template>
+        <li *ngIf="user$ | async as user; else anonymusUser" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false"> {{ user.displayName }}</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown01">
             <li><a class="dropdown-item" routerLink="/my-orders">My Orders</a></li>
