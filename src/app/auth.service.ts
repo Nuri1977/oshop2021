@@ -21,8 +21,8 @@ export class AuthService {
   }
 
   logout(){
-
-
     this.afAuth.signOut()
   }
+
+  authUid:any = this.afAuth.user.subscribe(user => this.authUid = user?.uid)
 }
