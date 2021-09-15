@@ -9,9 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   user$: Observable<firebase.User | null>;
+  authUid$: Observable<firebase.User | null>;
 
   constructor(private afAuth: AngularFireAuth, private _route: ActivatedRoute) {
     this.user$ = afAuth.authState
+    this.authUid$= afAuth.user
    }
 
   login(){
@@ -24,5 +26,9 @@ export class AuthService {
     this.afAuth.signOut()
   }
 
-  authUid:any = this.afAuth.user.subscribe(user => this.authUid = user?.uid)
+
+  authUid:any = this.afAuth.user.subscribe(user => {
+    if (user) return user.uid
+    return null
+  } )
 }

@@ -23,13 +23,9 @@ export class UserService {
   }
 
 
-  getUser(uid:string){
-    if(uid !== null){
+  getUser(uid:string):Observable<any>{
       return this._db.object('users/' + uid).valueChanges()
-    }
-    else {
-      return this._db.object('users').valueChanges()
-    }
+
   }
 
 
